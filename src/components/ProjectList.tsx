@@ -8,7 +8,7 @@ const ProjectList = () => {
     const [projects, setProjects] = useState<IProject[]>([]);
 
     useEffect(() => {
-        staticApiClient.get<string>("/test.txt")
+        staticApiClient.get<string>("/project-list.csv")
             .then(res => {
                 // remove first & last element --> csv header & empty line
                 const lines = res.data.split("\n").slice(1, -1);
@@ -29,7 +29,8 @@ const ProjectList = () => {
 
     return (
         <Box padding={4}>
-            <Typography variant="h3" paddingBottom={5}>Projects</Typography>
+            <Typography variant="h3" paddingBottom={2}>Projects</Typography>
+            <Typography variant="body1" paddingBottom={5}>Note that some repositories may be unavailable at this time.</Typography>
             <Grid2 container justifyContent="center" spacing={3}>
                 {projects.map((x, index) => <ProjectListItem key={index} project={x}/>)}
             </Grid2>
