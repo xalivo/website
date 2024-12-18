@@ -1,6 +1,6 @@
 import {Box, Stack, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import apiClient from "../common/api-client.ts";
+import {staticApiClient} from "../common/api-client.ts";
 import {IProject} from "../common/models.ts";
 import ProjectListItem from "./ProjectListItem.tsx";
 
@@ -8,9 +8,9 @@ const ProjectList = () => {
     const [projects, setProjects] = useState<IProject[]>([]);
 
     useEffect(() => {
-        apiClient.get<string>("/test.txt")
+        staticApiClient.get<string>("/test.txt")
             .then(res => {
-                // remove first & last element --> csv header 
+                // remove first & last element --> csv header & empty line
                 const lines = res.data.split("\n").slice(1, -1);
 
                 setProjects(lines.map(x => {

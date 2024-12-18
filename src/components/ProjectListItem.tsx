@@ -14,7 +14,7 @@ const ProjectListItem = ({project}: IProjectListItemProps) => {
                     {project.description}
                 </Typography>
                 <Typography variant="body2">
-                    text
+                    Status: {project.status}
                 </Typography>
             </CardContent>
             <CardActions>
