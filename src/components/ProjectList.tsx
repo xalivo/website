@@ -1,4 +1,4 @@
-import {Box, Stack, Typography} from "@mui/material";
+import {Box, Grid2, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import {staticApiClient} from "../common/api-client.ts";
 import {IProject} from "../common/models.ts";
@@ -20,7 +20,8 @@ const ProjectList = () => {
                         url: splitLine[1],
                         status: splitLine[2],
                         description: splitLine[3],
-                        repoUrl: splitLine[4]
+                        repoUrl: splitLine[4],
+                        imageUrl: splitLine[5],
                     } as IProject;
                 }));
             });
@@ -29,9 +30,9 @@ const ProjectList = () => {
     return (
         <Box padding={4}>
             <Typography variant="h3" paddingBottom={5}>Projects</Typography>
-            <Stack gap={2}>
+            <Grid2 container justifyContent="center" spacing={3}>
                 {projects.map((x, index) => <ProjectListItem key={index} project={x}/>)}
-            </Stack>
+            </Grid2>
         </Box>
     );
 };

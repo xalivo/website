@@ -4,4 +4,5 @@ export interface IProject {
     status: "completed" | "pending" | "on-hold" | "discontinued";
     description: string;
     repoUrl: string;
+    imageUrl: string;
 }
