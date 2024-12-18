@@ -1,7 +1,8 @@
-import {Box} from "@mui/material";
+import {Box, Stack, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import apiClient from "../common/api-client.ts";
 import {IProject} from "../common/models.ts";
+import ProjectListItem from "./ProjectListItem.tsx";
 
 const ProjectList = () => {
     const [projects, setProjects] = useState<IProject[]>([]);
@@ -9,14 +10,28 @@ const ProjectList = () => {
     useEffect(() => {
         apiClient.get<string>("/test.txt")
             .then(res => {
-                const lines = res.data.split("\n");
-                setProjects(lines.map(x => {return {name: x.split(";")[0], url: x.split(";")[1]}}).slice(0, -1));
+                // remove first & last element --> csv header 
+                const lines = res.data.split("\n").slice(1, -1);
+
+                setProjects(lines.map(x => {
+                    const splitLine = x.split(";");
+                    return {
+                        name: splitLine[0],
+                        url: splitLine[1],
+                        status: splitLine[2],
+                        description: splitLine[3],
+                        repoUrl: splitLine[4]
+                    } as IProject;
+                }));
             });
     }, []);
 
     return (
-        <Box>
-            {projects.map(x => <p key={x.name}>{x.name}: {x.url}</p>)}
+        <Box padding={4}>
+            <Typography variant="h3" paddingBottom={5}>Projects</Typography>
+            <Stack gap={2}>
+                {projects.map((x, index) => <ProjectListItem key={index} project={x}/>)}
+            </Stack>
         </Box>
     );
 };
