@@ -1,13 +1,12 @@
 import {IProject} from "../common/models.ts";
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
-import {IMAGE_PATH} from "../common/deploy-config.ts";
 
 interface IProjectListItemProps {
     project: IProject;
 }
 
 const ProjectListItem = ({project}: IProjectListItemProps) => {
-    const image = project.imageUrl === "" ? "https://placehold.co/400.jpg" : IMAGE_PATH + project.imageUrl;
+    const image = project.imageUrl === "" ? "https://placehold.co/400.jpg" : project.imageUrl;
     return (
         <Card sx={{minWidth: 350}}>
             <CardMedia
