@@ -21,6 +21,8 @@ const useFlowerService = () => {
             futureFlowerArray.push({id: i, type: types[i], color: colors[i]});
         }
 
+        console.log(futureFlowerArray);
+
         setFlowerArray(futureFlowerArray);
     }
 

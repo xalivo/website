@@ -1,5 +1,6 @@
 import {Button, Grid2 as Grid} from "@mui/material";
 import {useFlowerService} from "../service/flowerService.ts";
+import FlowerView from "../components/FlowerView.tsx";
 
 // tools: flower
 const FlowerPage = () => {
@@ -11,10 +12,9 @@ const FlowerPage = () => {
                 <Button color={"success"} variant={"contained"}>Share</Button>
                 <Button color={"primary"} variant={"contained"} onClick={setRandomFlowers}>Random flowers</Button>
                 <Button color={"error"} variant={"contained"} onClick={reset}>Reset</Button></Grid>
-            <Grid size={12} minHeight={100} style={{backgroundColor: "blue"}}>
-                {flowerArray.toString()}
+            <Grid size={12} minHeight={100}>
+                <FlowerView flowers={flowerArray}/>
             </Grid>
-
         </Grid>
     );
 };
