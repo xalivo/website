@@ -3,6 +3,8 @@ import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import Navbar from "./components/Navbar.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import FlowerPage from "./pages/FlowerPage.tsx";
+import Redirect from "./components/Redirect.tsx";
+import {YULE_URL} from "./common/deploy-config.ts";
 
 const darkTheme = createTheme({
     palette: {
@@ -11,6 +13,7 @@ const darkTheme = createTheme({
 });
 
 const App = () => {
+
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
@@ -19,6 +22,7 @@ const App = () => {
                 <RouterHash>
                     <Routes>
                         <Route path={"/"} element={<HomePage/>}/>
+                        <Route path={"/yule"} element={<Redirect url={YULE_URL}/>}/>
                         <Route path={"/flower"} element={<FlowerPage/>}/>
                     </Routes>
                 </RouterHash>
