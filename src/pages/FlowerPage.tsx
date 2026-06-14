@@ -23,7 +23,7 @@ const FlowerPage = () => {
             </Grid>
             <Grid size={12}>
                 <BeeView initialBeeTop={130}/>
-                <BeeView initialBeeTop={130} initialBeeRight={200} initalBeeIndex={1}/>
+                <BeeView initialBeeTop={130} initialBeeRight={200} initialBeeIndex={1}/>
             </Grid>
             <Grid size={12} minHeight={100}>
                 <FlowerView flowers={flowerArray}/>
