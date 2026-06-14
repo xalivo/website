@@ -6,3 +6,10 @@ export interface IProject {
     repoUrl: string;
     imageUrl: string;
 }
+
+// tools: flower
+export interface IFlower {
+    id: number;
+    type: string;
+    color: string;
+}

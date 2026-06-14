@@ -1,24 +1,33 @@
 import {useState} from "react";
+import {IFlower} from "../common/models.ts";
+import {flowerColors, flowerTypes} from "../common/constants.ts";
 
 const useFlowerService = () => {
-    const [flowerArray, setFlowerArray] = useState([1, 2, 3, 4, 5]);
+    const [flowerArray, setFlowerArray] = useState<IFlower[]>([]);
 
-    const randomiseFlowerArray = () => {
-        const arrayCopy = [...flowerArray];
-        let currentIndex = flowerArray.length;
+    const setRandomFlowers = (count: number = 5) => {
+        const futureFlowerArray: IFlower[] = [];
 
-        while (currentIndex != 0) {
-            const randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
+        for (let i = 0; i < count; i++) {
+            const typeIndex = Math.floor(Math.random() * flowerTypes.length);
+            const colorIndex = Math.floor(Math.random() * flowerColors.length);
 
-            [arrayCopy[currentIndex], arrayCopy[randomIndex]] = [
-                arrayCopy[randomIndex], arrayCopy[currentIndex]];
+            futureFlowerArray.push({id: i, type: flowerTypes[typeIndex], color: flowerColors[colorIndex]});
         }
 
-        setFlowerArray(arrayCopy);
+        setFlowerArray(futureFlowerArray);
     }
 
-    return {flowerArray, randomiseFlowerArray};
+    const removeById = (id: number) => {
+        const newArray = flowerArray.filter(x => x.id !== id);
+        setFlowerArray(newArray);
+    }
+
+    const reset = () => {
+        setFlowerArray([]);
+    }
+
+    return {flowerArray, setRandomFlowers, removeById, reset};
 }
 
 export {useFlowerService};
