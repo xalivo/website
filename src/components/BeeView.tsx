@@ -5,11 +5,11 @@ import {useEffect, useState} from "react";
 interface IBeeViewProps {
     initialBeeTop: number;
     initialBeeRight?: number;
-    initalBeeIndex?: number;
+    initialBeeIndex?: number;
 }
 
-const BeeView = ({initialBeeTop, initialBeeRight, initalBeeIndex}: IBeeViewProps) => {
-    const [currentBeeIndex, setCurrentBeeIndex] = useState<number>(initalBeeIndex ?? 0);
+const BeeView = ({initialBeeTop, initialBeeRight, initialBeeIndex}: IBeeViewProps) => {
+    const [currentBeeIndex, setCurrentBeeIndex] = useState<number>(initialBeeIndex ?? 0);
     const [beeTop, setBeeTop] = useState<number>(initialBeeTop);
     const [beeRight, setBeeRight] = useState<number>(initialBeeRight ?? 0);
 
