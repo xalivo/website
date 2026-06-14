@@ -9,9 +9,9 @@ interface IFlowerViewProps {
 // tools: flower
 const FlowerView = ({flowers}: IFlowerViewProps) => {
     return (
-        <Stack direction={"row"} style={{backgroundColor: "blue"}}>
+        <Stack direction={"row"}>
             {flowers.map(f => (
-                <img key={f.id} width={75} src={`${FLOWER_IMAGE_BASE_URL}${f.type}-${f.color}.png`}/>
+                <img key={f.id} width={`${100 / flowers.length}%`} src={`${FLOWER_IMAGE_BASE_URL}${f.type}-${f.color}.png`} alt={`${f.type} in ${f.color}`}/>
             ))}
         </Stack>
     );

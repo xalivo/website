@@ -12,7 +12,7 @@ const FlowerPage = () => {
                 <Button color={"success"} variant={"contained"}>Share</Button>
                 <Button color={"primary"} variant={"contained"} onClick={() => setRandomFlowers()}>Random flowers</Button>
                 <Button color={"error"} variant={"contained"} onClick={reset}>Reset</Button></Grid>
-            <Grid size={12} minHeight={100}>
+            <Grid size={12} minHeight={100} display={"flex"} justifyContent={"center"}>
                 <FlowerView flowers={flowerArray}/>
             </Grid>
         </Grid>
